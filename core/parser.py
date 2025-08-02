@@ -106,13 +106,11 @@ async def parse_channel(channel_name, months=None, all_time=False, limit=10):
             async for message in telegram_client.get_chat_history(chat.id):
                 if message.date < date_from:
                     break
-                await process_message(message)
-                    
+                await process_message(message)  
         else:
             # Parse limited number of posts
             async for message in telegram_client.get_chat_history(chat.id, limit=limit):
-                await process_message(message)
-                    
+                await process_message(message)   
         return saved_count
 
     except FloodWaitError as e:
